@@ -45,3 +45,8 @@ workflows:
       - integration
       - notify_success
       - notify_failure
+  test:
+    jobs:
+      - integration
+      - notify_success
+      - notify_failure
