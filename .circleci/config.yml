@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  line: decoch/line
+  line: decoch/line@1.0.0
 
 references:
   working_dir: &working_dir /home/circleci/repo
