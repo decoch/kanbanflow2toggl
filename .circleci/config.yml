@@ -25,7 +25,7 @@ jobs:
           message: KanbanFlow2Toggl failured
 
 workflows:
-  main:
+  cron:
     triggers:
       - schedule:
           cron: "0 9 * * *" # UTC
