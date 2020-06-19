@@ -12,7 +12,7 @@ references:
     working_directory: *working_dir
 
 jobs:
- integration:
+  integration:
     <<: *container_for_ruby
     steps:
       - checkout
