@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  line: decoch/line@1.0.0
-
 references:
   working_dir: &working_dir /home/circleci/repo
 
@@ -19,10 +16,7 @@ jobs:
       - run:
           name: execute
           command: |
-            exit 1
-      - line/notify:
-          when: on_fail
-          message: KanbanFlow2Toggl failured
+            ruby main.rb
 
 workflows:
   cron:
