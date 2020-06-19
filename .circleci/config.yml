@@ -1,0 +1,31 @@
+version: 2.1
+
+references:
+  working_dir: &working_dir /home/circleci/repo
+
+  container_for_ruby: &container_for_ruby
+    docker:
+      - image: circleci/ruby:2.7.1
+    working_directory: *working_dir
+
+jobs:
+ integration:
+    <<: *container_for_ruby
+    steps:
+      - checkout
+      - run:
+          name: execute
+          command: |
+            ruby main.rb
+
+workflows:
+  main:
+    triggers:
+      - schedule:
+          cron: "0 9 * * *" # UTC
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - integration
