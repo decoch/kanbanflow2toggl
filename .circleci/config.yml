@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  line: decoch/line
+
 references:
   working_dir: &working_dir /home/circleci/repo
 
@@ -17,6 +20,17 @@ jobs:
           name: execute
           command: |
             ruby main.rb
+  notify_success:
+    <<: *container_for_ruby
+    steps:
+    - line/notify:
+        message: KanbanFlow2Toggl success
+  notify_failure:
+    <<: *container_for_ruby
+    steps:
+    - line/notify:
+        fail_only: true
+        message: KanbanFlow2Toggl failure
 
 workflows:
   main:
@@ -29,3 +43,5 @@ workflows:
                 - master
     jobs:
       - integration
+      - notify_success
+      - notify_failure
