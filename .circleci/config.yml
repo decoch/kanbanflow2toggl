@@ -22,7 +22,7 @@ workflows:
   cron:
     triggers:
       - schedule:
-          cron: "0 15 * * *" # UTC
+          cron: "0 0 * * *" # UTC
           filters:
             branches:
               only:
