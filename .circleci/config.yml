@@ -20,17 +20,8 @@ jobs:
           name: execute
           command: |
             ruby main.rb
-  notify_success:
-    <<: *container_for_ruby
-    steps:
-    - line/notify:
-        message: KanbanFlow2Toggl success
-  notify_failure:
-    <<: *container_for_ruby
-    steps:
-    - line/notify:
-        fail_only: true
-        message: KanbanFlow2Toggl failure
+      - line/notify:
+          message: KanbanFlow2Toggl success
 
 workflows:
   main:
@@ -43,10 +34,6 @@ workflows:
                 - master
     jobs:
       - integration
-      - notify_success
-      - notify_failure
   test:
     jobs:
       - integration
-      - notify_success
-      - notify_failure
